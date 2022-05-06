@@ -136,17 +136,63 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Recursively print the left side of the current node, then the current node, 
 	//then recursively print the right side of current node
 	//For a bst this will print the values in sorted order from smallest to largest
-	public void inOrder() {
+	public void inOrder() 
+	{
+		
 		inOrderRecurse(root); 
-		 System.out.println(InOrder test commit);
+		 System.out.println("InOrder test commit");
 	}
 	
-	public void inOrderRecurse(BSTNode<T> node) {
+	public void inOrderRecurse(BSTNode<T> node) 
+	{
+		if (node == null)
+            return;
+ 
+		
+       //left child recurse 
+        inOrderRecurse(node.leftChild);
+ 
+        System.out.println (node.data);
+      
+       //right child recurse 
+        inOrderRecurse(node.rightChild);
 		
 	}
-	//Traverse the tree in an inorder fashion but using a stack
-	public void inOrderStack() {
+	//Traverse the tree in an in order fashion but using a stack
+	public void inOrderStack() 
+	{
 		Stack<BSTNode<T>> in = new Stack<BSTNode<T>>();
+
+        if (root == null)
+            return;
+ 
+ 
+        //Stack<BSTNode<T>> s = new Stack<BSTNode<T>>();
+        
+        BSTNode<T> curr = root;
+ 
+        // traverse the tree
+        while (curr != null || in.size() > 0)
+        {
+ 
+            
+            while (curr !=  null)
+            {
+                
+                in.push(curr);
+                curr = curr.leftChild;
+            }
+ 
+            /* Current must be NULL at this point */
+            curr = in.pop();
+ 
+            System.out.print(curr.data + " ");
+ 
+            /* we have visited the node and its
+               left subtree.  Now, it's right
+               subtree's turn */
+            curr = curr.rightChild;
+        }
 		
 		
 	}
@@ -155,7 +201,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	//Recurse on the children and then print the value in the current node
 	public void postOrder() {
 		postOrderRecurse(root); 
-		 System.out.println(PostOrder test commit); 
+		 System.out.println("PostOrder test commit"); 
 	}
 	
 	public void postOrderRecurse(BSTNode<T> node) {
