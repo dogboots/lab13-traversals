@@ -128,7 +128,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		Stack<BSTNode<T>> pre = new Stack<BSTNode<T>>();
 		if (root == null)
 			return;
-
+	}
 	//Traverse the tree in an inorder fashion
 	//Recursively print the left side of the current node, then the current node, 
 	//then recursively print the right side of current node
